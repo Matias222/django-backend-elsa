@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
@@ -17,16 +17,16 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 # Assuming settings.py is in the back folder
-BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load the .env file
-config.search_path = BASE_DIR
+#config.search_path = BASE_DIR
 
 
-SECRET_KEY = config('SECRET_KEY')
-DB_USER = config('DB_USER')
-DB_HOST = config('DB_HOST')
-DB_PASSWORD = config('DB_PASSWORD')
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DB_USER = os.environ.get('DB_USER')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
 
 
 # Quick-start development settings - unsuitable for production
